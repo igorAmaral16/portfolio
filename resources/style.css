@@ -14,7 +14,7 @@
 :root {
     --bg-color: #fdfdfd;
     --text-color: #333;
-    --main-color: #8a00ca;
+    --main-color: #590083;
     --white-color: #fdfdfd;
     --shadow-color: rgba(0, 0, 0, .2);
 }
@@ -939,3 +939,12 @@ span {
 img {
     border-radius: 20px;
 }
+
+  .agradecimento {
+    text-align: center;
+    font-size: 24px;
+    color: #8a00ca;
+    padding: 5vw;
+    max-width: 80%;
+    margin: auto;
+  }
