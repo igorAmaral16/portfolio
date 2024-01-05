@@ -76,17 +76,5 @@ ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .test
 ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
 
-/*============== adicionando - no final do input nome ============*/
-
-/*const input = document.getElementById('name');
-
-input.addEventListener('blur', function() {
-  const valor = this.value.trim();
-  const textoFormatado = valor ? valor + ' - ' : '';
-
-  this.value = textoFormatado;
-  resultado.innerText = textoFormatado;
-});
-*/
 
   
