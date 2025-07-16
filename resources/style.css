@@ -937,15 +937,157 @@ span {
         font-size: 4.5rem;
     }
 }
+
 img {
     border-radius: 20px;
 }
 
-  .agradecimento {
+.agradecimento {
     text-align: center;
     font-size: 24px;
     color: #8a00ca;
     padding: 5vw;
     max-width: 80%;
     margin: auto;
-  }
+}
+
+/* ===== BANNER DE COOKIES (THEME‑AWARE) ===== */
+#cookie-banner {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: var(--bg-color);
+    /* usa o fundo do tema */
+    color: var(--text-color);
+    /* texto do tema */
+    box-shadow: 0 0.5rem 1rem var(--shadow-color);
+    border-radius: 0.8rem;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    z-index: 9999;
+}
+
+#cookie-banner p {
+    margin: 0;
+    flex: 1;
+}
+
+#cookie-banner .buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+#cookie-banner button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    border: .2rem solid var(--main-color);
+    background: var(--main-color);
+    color: var(--white-color);
+    transition: .3s ease;
+}
+
+#cookie-banner button:hover {
+    background: var(--white-color);
+    color: var(--main-color);
+}
+
+/* ===== PAINEL DE PREFERÊNCIAS ===== */
+.panel-hidden {
+    display: none;
+}
+
+#cookie-panel {
+    position: fixed;
+    bottom: 4rem;
+    right: 1rem;
+    background: var(--bg-color);
+    /* em vez de branco */
+    color: var(--text-color);
+    /* texto dinâmico */
+    padding: 1rem 1.2rem;
+    border-radius: .8rem;
+    box-shadow: 0 .2rem .6rem var(--shadow-color);
+    font-size: 1.4rem;
+    z-index: 10000;
+    max-width: 20rem;
+}
+
+#cookie-panel h3 {
+    margin: 0 0 .5rem;
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
+#cookie-panel label {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+
+#cookie-panel button {
+    padding: .5rem 1rem;
+    border-radius: .6rem;
+    font-size: 1.3rem;
+    border: .2rem solid var(--main-color);
+    background: var(--main-color);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: .3s;
+}
+
+#cookie-panel button:hover {
+    background: var(--white-color);
+    color: var(--main-color);
+}
+
+/* ===== BANNER DE COOKIES ===== */
+#cookie-banner {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: rgba(var(--bg-color-rgb), .95);
+    /* se quiser sem transparência: var(--bg-color) */
+    color: var(--text-color);
+    box-shadow: 0 0.5rem 1rem var(--shadow-color);
+    border-radius: 0.8rem;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    z-index: 9999;
+}
+
+#cookie-banner p {
+    margin: 0;
+    flex: 1;
+}
+
+#cookie-banner .buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+#cookie-banner button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.3rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    border: .2rem solid var(--main-color);
+    background: var(--main-color);
+    color: var(--white-color);
+    transition: .3s ease;
+}
+
+#cookie-banner button:hover {
+    background: var(--white-color);
+    color: var(--main-color);
+}

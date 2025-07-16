@@ -7,6 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Igor Amaral</title>
 
+    <!-- COOKIE CONSENT & GA LOADER -->
+    <script>
+        // função que injeta o Google Analytics
+        function loadGA() {
+            const s1 = document.createElement('script');
+            s1.src = 'https://www.googletagmanager.com/gtag/js?id=G‑V68P1DV2F9';
+            s1.async = true;
+            document.head.appendChild(s1);
+
+            const s2 = document.createElement('script');
+            s2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G‑V68P1DV2F9');
+      `;
+            document.head.appendChild(s2);
+        }
+
+        // se já aceitou analytics, carrega agora
+        if (localStorage.getItem('cookie_consent') === 'analytics') {
+            loadGA();
+        }
+    </script>
+
     <!-- swiper css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
@@ -16,17 +41,26 @@
     <link rel="stylesheet" href="./resources/style.css">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V68P1DV2F9"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-V68P1DV2F9');
-</script>
 
 <body>
+
+    <!-- BANNER DE COOKIES -->
+    <div id="cookie-banner">
+        <p>Usamos cookies para melhorar sua experiência e coletar estatísticas de acesso.</p>
+        <div class="buttons">
+            <button id="btn-manage">Gerenciar cookies</button>
+            <button id="btn-accept">Aceitar o necessário</button>
+        </div>
+    </div>
+    <!-- PAINEL DISCRETO DE PREFERÊNCIAS -->
+    <div id="cookie-panel" class="panel-hidden">
+        <h3>Preferências de Cookies</h3>
+        <label>
+            <input type="checkbox" id="chk-analytics">
+            Cookies de estatísticas (Google Analytics)
+        </label>
+        <button id="panel-save">Salvar</button>
+    </div>
 
     <header class="header">
         <a href="index.html" class="logo">Portfolio</a>
@@ -236,6 +270,44 @@
         </div>
     </footer>
 
+    <script>
+        // referências aos elementos
+        const banner = document.getElementById('cookie-banner');
+        const btnAccept = document.getElementById('btn-accept');
+        const btnManage = document.getElementById('btn-manage');
+        const panel = document.getElementById('cookie-panel');
+        const btnSave = document.getElementById('panel-save');
+        const chkAnalytics = document.getElementById('chk-analytics');
+
+        // ao carregar a página, se já houver consentimento, ocultar banner
+        const consent = localStorage.getItem('cookie_consent');
+        if (consent) {
+            banner.style.display = 'none';
+            // se analytics, já terá sido chamado loadGA() no head
+        }
+
+        // “Aceitar o necessário” passa a ser “aceitar tudo”
+        btnAccept.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'analytics');
+            banner.style.display = 'none';
+            loadGA();
+        });
+
+        // abre/fecha painel de preferências
+        btnManage.addEventListener('click', () => {
+            chkAnalytics.checked = (localStorage.getItem('cookie_consent') === 'analytics');
+            panel.classList.toggle('panel-hidden');
+        });
+
+        // salva escolha no painel
+        btnSave.addEventListener('click', () => {
+            const choice = chkAnalytics.checked ? 'analytics' : 'necessary';
+            localStorage.setItem('cookie_consent', choice);
+            if (choice === 'analytics') loadGA();
+            banner.style.display = 'none';
+            panel.classList.add('panel-hidden');
+        });
+    </script>
 
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
